@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>InterviewX — AI Interview Simulator</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      Interview<span>X</span>
+    </div>
+
+   <nav>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#interview">Practice</a>
+  <a href="#dashboard">Dashboard</a>
+</nav>
+
+    <button class="nav-button" onclick="startInterview()">
+      Start Interview
+    </button>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section id="home" class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        ✨ AI-Powered Interview Simulator
+      </div>
+
+      <h1>
+        Practice Interviews.
+        <br>
+
+        <span>Build Confidence.</span>
+      </h1>
+
+      <p>
+        Simulate real interviews, answer challenging questions,
+        receive instant feedback and track your improvement.
+      </p>
+
+      <div class="hero-buttons">
+
+        <button
+          class="primary-button"
+          onclick="startInterview()"
+        >
+          🎤 Start Interview
+        </button>
+
+        <button
+          class="secondary-button"
+          onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})"
+        >
+          Explore Features
+        </button>
+
+      </div>
+
+      <div class="hero-stats">
+
+        <div>
+          <strong>50+</strong>
+          <span>Questions</span>
+        </div>
+
+        <div>
+          <strong>5</strong>
+          <span>Interview Modes</span>
+        </div>
+
+        <div>
+          <strong>100</strong>
+          <span>Max Score</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INTERVIEW SETUP ================= -->
+
+  <section id="interview" class="setup-section">
+
+    <div class="section-heading">
+
+      <div class="badge">
+        🎯 Interview Setup
+      </div>
+
+      <h2>
+        Build your
+        <span>interview.</span>
+      </h2>
+
+      <p>
+        Choose your interview type and difficulty level.
+      </p>
+
+    </div>
+
+
+    <div class="setup-card">
+
+      <div class="form-group">
+
+        <label>Interview Type</label>
+
+        <select id="interviewType">
+
+          <option value="software">
+            Software Developer
+          </option>
+
+          <option value="hr">
+            HR Interview
+          </option>
+
+          <option value="marketing">
+            Marketing
+          </option>
+
+          <option value="general">
+            General Interview
+          </option>
+
+          <option value="college">
+            College / Placement
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Experience Level</label>
+
+        <select id="experience">
+
+          <option value="beginner">
+            Beginner
+          </option>
+
+          <option value="intermediate">
+            Intermediate
+          </option>
+
+          <option value="advanced">
+            Advanced
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Difficulty</label>
+
+        <select id="difficulty">
+
+          <option value="easy">
+            Easy
+          </option>
+
+          <option value="medium" selected>
+            Medium
+          </option>
+
+          <option value="hard">
+            Hard
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="start-button"
+        onclick="beginInterview()"
+      >
+        Start Simulation →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURES ================= -->
+
+  <section id="features" class="features-section">
+
+    <div class="section-heading">
+
+      <div class="badge">
+        🚀 Features
+      </div>
+
+      <h2>
+        Everything you need to
+        <span>improve.</span>
+      </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          🎤
+        </div>
+
+        <h3>Realistic Interviews</h3>
+
+        <p>
+          Practice questions designed around real interview
+          situations.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          📊
+        </div>
+
+        <h3>Instant Scoring</h3>
+
+        <p>
+          Get an automatic score based on relevance,
+          structure and keywords.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          💡
+        </div>
+
+        <h3>Smart Feedback</h3>
+
+        <p>
+          Understand what you did well and what you
+          should improve.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          📈
+        </div>
+
+        <h3>Progress Tracking</h3>
+
+        <p>
+          Your interview results are saved locally so you
+          can track improvement.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="dashboard-section">
+
+  <div class="section-heading">
+
+    <div class="badge">
+      📊 Performance Dashboard
+    </div>
+
+    <h2>
+      Track your <span>progress.</span>
+    </h2>
+
+    <p>
+      Review your interview performance and improve with every attempt.
+    </p>
+
+  </div>
+
+
+  <div class="dashboard-stats">
+
+    <div class="dashboard-card">
+      <span>🎯</span>
+      <strong id="totalInterviews">0</strong>
+      <p>Total Interviews</p>
+    </div>
+
+    <div class="dashboard-card">
+      <span>📈</span>
+      <strong id="averageScore">0</strong>
+      <p>Average Score</p>
+    </div>
+
+    <div class="dashboard-card">
+      <span>🏆</span>
+      <strong id="bestScore">0</strong>
+      <p>Best Score</p>
+    </div>
+
+    <div class="dashboard-card">
+      <span>🔥</span>
+      <strong id="lastScore">0</strong>
+      <p>Last Score</p>
+    </div>
+
+  </div>
+
+
+  <div class="history-card">
+
+    <div class="history-header">
+      <h3>Recent Interviews</h3>
+
+      <button
+        class="clear-history"
+        onclick="clearHistory()"
+      >
+        Clear History
+      </button>
+    </div>
+
+
+    <div id="historyList">
+
+      <div class="empty-history">
+        No interview attempts yet.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ================= INTERVIEW MODAL ================= -->
+
+  <div
+    class="modal"
+    id="interviewModal"
+  >
+
+    <div class="interview-container">
+
+
+      <!-- HEADER -->
+
+      <div class="interview-header">
+
+        <div>
+
+          <span class="small-label">
+            LIVE INTERVIEW
+          </span>
+
+          <h3 id="modeTitle">
+            Software Developer
+          </h3>
+
+        </div>
+
+
+        <div class="timer" id="timer">
+          01:00
+        </div>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+
+      <div class="progress-container">
+
+        <div class="progress-info">
+
+          <span id="questionNumber">
+            Question 1 of 5
+          </span>
+
+          <span id="progressPercent">
+            20%
+          </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+          <div
+            class="progress-fill"
+            id="progressFill"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUESTION -->
+
+      <div class="question-area">
+
+        <div class="question-icon">
+          ?
+        </div>
+
+        <h2 id="questionText">
+          Tell me about yourself.
+        </h2>
+
+        <p class="question-tip">
+          💡 Take your time and give a structured answer.
+        </p>
+
+      </div>
+
+
+      <!-- ANSWER -->
+
+      <textarea
+        id="answerInput"
+        placeholder="Type your answer here..."
+      ></textarea>
+
+
+      <!-- ACTIONS -->
+
+      <div class="interview-actions">
+
+        <button
+          class="exit-button"
+          onclick="closeInterview()"
+        >
+          Exit
+        </button>
+
+        <button
+          class="submit-button"
+          onclick="submitAnswer()"
+        >
+          Submit Answer →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RESULT MODAL ================= -->
+
+  <div
+    class="modal"
+    id="resultModal"
+  >
+
+    <div class="result-container">
+
+      <div class="result-icon">
+        🏆
+      </div>
+
+      <div class="badge">
+        Interview Complete
+      </div>
+
+      <h2>
+        Great job!
+      </h2>
+
+      <p>
+        Here's your performance report.
+      </p>
+
+
+      <div class="score-circle">
+
+        <strong id="finalScore">
+          0
+        </strong>
+
+        <span>
+          /100
+        </span>
+
+      </div>
+
+
+      <div class="score-grid">
+
+        <div>
+          <strong id="relevanceScore">
+            0%
+          </strong>
+
+          <span>
+            Relevance
+          </span>
+        </div>
+
+
+        <div>
+          <strong id="structureScore">
+            0%
+          </strong>
+
+          <span>
+            Structure
+          </span>
+        </div>
+
+
+        <div>
+          <strong id="detailScore">
+            0%
+          </strong>
+
+          <span>
+            Detail
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="feedback-box">
+
+        <h3>
+          🤖 Interview Coach
+        </h3>
+
+        <p id="finalFeedback">
+          Good work!
+        </p>
+
+      </div>
+
+
+      <div class="result-buttons">
+
+        <button
+          class="secondary-button"
+          onclick="closeResult()"
+        >
+          Close
+        </button>
+
+        <button
+          class="primary-button"
+          onclick="restartInterview()"
+        >
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="logo">
+      Interview<span>X</span>
+    </div>
+
+    <p>
+      Practice smarter. Interview better.
+    </p>
+
+    <small>
+      © 2026 InterviewX
+    </small>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
